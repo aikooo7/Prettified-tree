@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
   }
 
   printf("\nDirectories: %d\n", directories);
-  printf("Files: %d\n", directories);
+  printf("Files: %d\n", files);
 
   return EXIT_SUCCESS;
 }
