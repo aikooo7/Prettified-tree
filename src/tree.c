@@ -21,7 +21,12 @@ int main(int argc, char *argv[]) {
     perror("Getting current working directory");
   }
 
-  if (argc > 1) {
+  if (argc > 1 && argv[1] != NULL) {
+    if (access(argv[1], F_OK) != 0) {
+      fprintf(stderr, "Can't open %s\n", argv[1]);
+      fprintf(stderr, "ERROR: %s\n", strerror(errno));
+      return EXIT_FAILURE;
+    }
     printf("%s\n", argv[1]);
 
     if (dir_not_empty(argv[1]) == 0) {
