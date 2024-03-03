@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.28.0)
+project(Prettified_tree LANGUAGES C)
+add_executable(tree)
+target_sources(tree PRIVATE src/tree.c libs/tree.h)
+install(TARGETS tree DESTINATION bin)
