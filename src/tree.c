@@ -64,9 +64,9 @@ void read_cwd_contents(char cwd[PATH_MAX], int spaces) {
   DIR* dp = opendir(cwd);
 
   if (dp == NULL) {
-    fprintf(stderr, "Error opening cwd %s\nWith error: %s", cwd,
-            strerror(errno));
-    exit(EXIT_FAILURE);
+    fprintf(stderr, "Error opening cwd %s\n", cwd);
+    fprintf(stderr, "With error: %s\n", strerror(errno));
+    exit(errno);
   }
 
   struct dirent* de;
