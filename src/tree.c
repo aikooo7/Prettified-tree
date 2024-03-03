@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
 
 void read_cwd_contents(char cwd[PATH_MAX], int spaces) {
   struct stat fi;
-  DIR *dp = opendir(cwd);
+  DIR* dp = opendir(cwd);
 
   if (dp == NULL) {
     fprintf(stderr, "Error opening cwd %s\nWith error: %s", cwd,
@@ -62,7 +62,7 @@ void read_cwd_contents(char cwd[PATH_MAX], int spaces) {
     exit(EXIT_FAILURE);
   }
 
-  struct dirent *de;
+  struct dirent* de;
   char path[PATH_MAX];
 
   while ((de = readdir(dp)) != NULL) {
@@ -122,13 +122,13 @@ void handler(int sig) {
   }
 }
 
-int dir_not_empty(const char *path) {
-  DIR *dir = opendir(path);
+int dir_not_empty(const char* path) {
+  DIR* dir = opendir(path);
   if (dir == NULL) {
     return -1;
   }
 
-  struct dirent *entry;
+  struct dirent* entry;
   int is_empty = 0;
 
   entry = readdir(dir);
