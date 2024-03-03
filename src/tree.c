@@ -46,8 +46,15 @@ int main(int argc, char* argv[]) {
     read_cwd_contents(filename, 3);
   }
 
-  printf("\nDirectories: %d\n", directories);
-  printf("Files: %d\n", files);
+  if (directories > 0) {
+    printf("\nDirectories: %d\n", directories);
+  }
+  if (files > 0) {
+    printf("Files: %d\n", files);
+  }
+  if (others > 0) {
+    printf("Others: %d\n", others);
+  }
 
   return EXIT_SUCCESS;
 }
