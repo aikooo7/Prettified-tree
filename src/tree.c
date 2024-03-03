@@ -10,10 +10,12 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[]) {
+static int files = 0;
+static int directories = 0;
+static int others = 0;
+
+int main(int argc, char* argv[]) {
   char filename[PATH_MAX];
-  int files = 0;
-  int directories = 0;
 
   signal(SIGINT, handler);
 
@@ -33,7 +35,7 @@ int main(int argc, char *argv[]) {
       printf("|\n");
     }
 
-    read_cwd_contents(argv[1], 3, &files, &directories);
+    read_cwd_contents(argv[1], 3);
   } else {
     printf(".\n");
 
@@ -41,7 +43,7 @@ int main(int argc, char *argv[]) {
       printf("|\n");
     }
 
-    read_cwd_contents(filename, 3, &files, &directories);
+    read_cwd_contents(filename, 3);
   }
 
   printf("\nDirectories: %d\n", directories);
@@ -50,8 +52,7 @@ int main(int argc, char *argv[]) {
   return EXIT_SUCCESS;
 }
 
-void read_cwd_contents(char cwd[PATH_MAX], int spaces, int *files,
-                       int *directories) {
+void read_cwd_contents(char cwd[PATH_MAX], int spaces) {
   struct stat fi;
   DIR *dp = opendir(cwd);
 
